@@ -49,3 +49,268 @@ ol {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #D9D9D9;
 }
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Добавляем отступы от краев */
+}
+
+.content {
+  display: flex;
+  gap: 30px; /* Точный отступ между колонками */
+  align-items: flex-start;
+  width: 1140px; /* Фиксированная ширина как в макете */
+  margin: auto;
+}
+
+/* Левая колонка - точная ширина из макета */
+.result {
+  display: flex;
+  flex-direction: column;
+  width: 711px; /* Точная ширина из макета */
+  flex-shrink: 0;
+}
+
+/* Правая колонка - точная ширина из макета */
+.content__details {
+  display: flex;
+  flex-direction: column;
+  width: 399px; /* Точная ширина из макета */
+  gap: 26px; /* Отступ между заголовком и карточками */
+}
+
+/* Форма - горизонтальное расположение полей */
+.search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-begin; /* Прижимаем к низу контейнера */
+  gap: 10px;
+  justify-content: space-between;
+  height: 65px; /* Высота формы из макета */
+}
+
+.search-form__fieldset {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Точные отступы между элементами */
+  border: 1px solid #FFF;
+  padding: 5px 0; /* Отступы внутри fieldset */
+}
+
+.search-form__fieldset-title {
+  font-size: 18px;
+  font-weight: 400; /* Обычный вес, не жирный */
+  font-family: 'Fira Sans Condensed', sans-serif;
+  margin-bottom: 5px;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 13px; /* Точный отступ между чекбоксами */
+}
+
+.search-form__label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.search-form__textfield {
+  background: transparent;
+  border: none;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
+  color: #FFF;
+  padding: 2px 0;
+  font-family: inherit;
+  font-size: 16px;
+  width: 100%;
+}
+
+.search-form__pseudo-checkbox {
+  width: 19px;
+  height: 19px;
+  border: 1px solid #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: "✓";
+  color: #FFF;
+  font-size: 14px;
+}
+
+.button {
+  background: transparent;
+  color: #FFF;
+  border: 1px solid #FFF;
+  padding: 6px 73px;
+  cursor: pointer;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+/* Контейнер для видео */
+.result__video-container {
+  width: 711px;
+  height: 386px;
+  margin-bottom: 16px;
+  /* Убираем background-color, чтобы не было фона */
+  background: transparent;
+  position: relative; /* Для позиционирования видео */
+  overflow: hidden; /* Скрываем части видео, выходящие за границы */
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Важно: заполняет весь контейнер, сохраняя пропорции */
+  display: block; /* Убирает лишние отступы вокруг видео */
+}
+
+/* Контейнер списка карточек */
+.content__list-container {
+  height: 298px;
+  overflow-y: auto;
+}
+
+/* Заголовок */
+.title {
+  font-size: 75px;
+  font-family: 'Oswald', sans-serif; /* Другой шрифт для заголовка */
+  font-weight: 700;
+  line-height: 0.94;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.content__accent {
+  color: #545050; /* Серый цвет для акцента */
+}
+
+/* 3. Отступы между элементами списка карточек */
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Отступ между карточками */
+}
+
+/* 4. Отступ между последней карточкой и кнопкой "Показать ещё" */
+.content__list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Отступ между списком и кнопкой */
+  height: 298px;
+  overflow-y: auto;
+}
+
+.more-button {
+  align-self: center; /* Центрируем кнопку */
+  margin-top: 10px;
+}
+
+/* 5. Уже применили gap для .content__list-container выше */
+
+/* 6. Расположение элементов внутри карточки */
+.content__video-card {
+  display: flex;
+  flex-direction: row; /* Элементы в одну строку */
+  align-items: flex-start; /* Прижимаем к верху */
+  justify-content: space-between;
+  gap: 10px; /* Отступ между текстом и изображением */
+}
+
+/* 7. Стили для изображения карточки */
+.content__video-card-thumbnail {
+  width: 194px; /* Фиксированная ширина */
+  height: 103px; /* Фиксированная высота */
+  object-fit: cover; /* Заполнение контейнера с сохранением пропорций */
+  object-position: center; /* Центрируем изображение */
+  flex-shrink: 0; /* Запрещаем сжиматься */
+}
+
+/* Текстовая часть карточки занимает всё доступное пространство */
+.content__video-card-description-container {
+  flex-grow: 1; /* Занимает всё пространство не занятое картинкой */
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Отступ между заголовком и описанием */
+}
+
+/* Дополнительные стили для карточек */
+.content__video-card-title {
+  font-size: 30px;
+  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 6px;
+  
+  /* Обработка переполнения текста */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px; /* Ограничиваем ширину для многоточия */
+}
+
+.content__video-card-description {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  line-height: 0.9; /* Необычный интерлиньяж для брутальности */
+  
+  /* Многострочное обрезание текста */
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Ограничиваем до 4 строк */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 65px; /* Высота примерно для 4 строк */
+}
+
+.content__card-link {
+  text-decoration: none; /* Убираем подчёркивание */
+  color: #FFFFFF; /* Явно задаем белый цвет */
+  display: block;
+}
+
+.content__card-link:active,
+.content__card-link:hover {
+  text-decoration: underline; /* Подчёркивание при взаимодействии */
+  color: #FFFFFF;
+}
+
+/* Стили для кнопки "Показать ещё" */
+.more-button {
+  background: transparent;
+  border: 1px solid #FFF;
+  color: #FFF;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.more-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+} 
