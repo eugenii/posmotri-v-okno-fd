@@ -496,6 +496,6 @@ ol {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10; /* Поверх всего содержимого контейнера */
+  z-index: 10; /* Поверх всего содержимого контейнера хотя может и 2 достаточно.. */
 }
 
