@@ -54,14 +54,14 @@ ol {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Добавляем отступы от краев */
+  padding: 20px;
 }
 
 .content {
   display: flex;
-  gap: 30px; /* Точный отступ между колонками */
+  gap: 30px;
   align-items: flex-start;
-  width: 1140px; /* Фиксированная ширина как в макете */
+  width: 1140px;
   margin: auto;
 }
 
@@ -69,7 +69,7 @@ ol {
 .result {
   display: flex;
   flex-direction: column;
-  width: 711px; /* Точная ширина из макета */
+  width: 711px;
   flex-shrink: 0;
 }
 
@@ -77,58 +77,68 @@ ol {
 .content__details {
   display: flex;
   flex-direction: column;
-  width: 399px; /* Точная ширина из макета */
-  gap: 26px; /* Отступ между заголовком и карточками */
+  width: 399px;
+  gap: 26px;
 }
 
 /* Форма - горизонтальное расположение полей */
 .search-form {
   display: flex;
   flex-direction: row;
-  align-items: flex-begin; /* Прижимаем к низу контейнера */
+  align-items: flex-begin;
   gap: 10px;
   justify-content: space-between;
-  height: 65px; /* Высота формы из макета */
+  height: 65px;
 }
 
 .search-form__fieldset {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px; /* Точные отступы между элементами */
-  border: 1px solid #FFF;
-  padding: 5px 0; /* Отступы внутри fieldset */
+  gap: 6px;
+  border: none;
+  padding: 5px 0;
 }
 
 .search-form__fieldset-title {
   font-size: 18px;
-  font-weight: 400; /* Обычный вес, не жирный */
+  font-weight: 400;
   font-family: 'Fira Sans Condensed', sans-serif;
   margin-bottom: 5px;
 }
 
 .search-form__checkbox-list {
   display: flex;
-  gap: 13px; /* Точный отступ между чекбоксами */
+  gap: 13px;
 }
 
 .search-form__label {
   display: flex;
   align-items: center;
+  width: fit-content;
   gap: 5px;
   cursor: pointer;
 }
 
 .search-form__textfield {
-  background: transparent;
-  border: none;
-  border-top: 1px solid #FFF;
-  border-bottom: 1px solid #FFF;
-  color: #FFF;
+/* Размеры и отступы */
+  width: 100%;
+  min-height: 27px;
   padding: 2px 0;
+
+  /* Границы - только сверху и снизу */
+  border: none;
+  border-top: 1px solid currentColor; /* Используем текущий цвет текста */
+  border-bottom: 1px solid currentColor;
+
+  /* Цвета */
+  color: #FFF; /* Цвет вводимого текста */
+  background-color: transparent; /* Прозрачный фон */
   font-family: inherit;
   font-size: 16px;
-  width: 100%;
+    /* Убираем стандартные стили браузера */
+  appearance: none;
+  outline: none;
 }
 
 .search-form__pseudo-checkbox {
@@ -138,25 +148,127 @@ ol {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
-  content: "✓";
-  color: #FFF;
-  font-size: 14px;
+/* Стили для плейсхолдера */
+.search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
 }
-
-.button {
-  background: transparent;
-  color: #FFF;
+/* Базовые стили псевдочекбокса */
+.search-form__pseudo-checkbox {
+  width: 19px;
+  height: 19px;
   border: 1px solid #FFF;
-  padding: 6px 73px;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Внутренний квадрат (закрашенная часть) */
+.search-form__pseudo-checkbox::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Когда чекбокс отмечен - показываем внутренний квадрат */
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  opacity: 1;
+}
+
+/* Подчёркивание текста при наведении на ЛЮБУЮ часть label чекбокса */
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+}
+
+/* Исключаем подчёркивание для label текстового поля */
+.search-form__fieldset:first-of-type .search-form__label:hover .search-form__label-text {
+  text-decoration: none;
+}
+
+/* Дополнительные стили для интерактивности */
+.search-form__label {
   cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.search-form__label:hover {
+  opacity: 0.8;
+}
+
+/* Общие стили для всех кнопок */
+.button {
+  /* Граница, цвет, шрифт */
+  border: 1px solid #FFF;
+  color: #FFF;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   font-weight: 700;
+  
+  /* Прозрачный фон */
+  background-color: transparent;
+  
+  /* Курсор и отступы */
+  cursor: pointer;
+  padding: 0;
+  
+  /* Убираем стандартные стили */
+  appearance: none;
+}
+
+/* Кнопка "Найти" в форме */
+.search-form__submit-button {
+  align-self: flex-end;
+  width: 194px;
   height: 34px;
-  flex-shrink: 0;
+}
+
+/* Кнопка "Показать ещё" */
+.more-button {
+  width: 100%;
+  height: 34px;
+}
+
+/* Состояния кнопок */
+
+/* Hover - подчёркивание текста */
+.button:hover {
+  text-decoration: underline;
+}
+
+/* Active - активное состояние (нажатие) */
+.button:active {
+  background-color: #545050;
+}
+
+/* Focus - визуальный фокус для доступности */
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #FFF; /* Кастомный outline */
+  outline-offset: 2px; /* Отступ от кнопки */
+}
+
+.button:hover {
+  opacity: 0.8; /* Легкое затемнение при наведении */
+}
+
+/* Убираем подчёркивание при активном состоянии, чтобы не накладывалось */
+.button:active {
+  text-decoration: none;
 }
 
 /* Контейнер для видео */
@@ -166,15 +278,15 @@ ol {
   margin-bottom: 16px;
   /* Убираем background-color, чтобы не было фона */
   background: transparent;
-  position: relative; /* Для позиционирования видео */
-  overflow: hidden; /* Скрываем части видео, выходящие за границы */
+  position: relative;
+  overflow: hidden;
 }
 
 .result__video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Важно: заполняет весь контейнер, сохраняя пропорции */
-  display: block; /* Убирает лишние отступы вокруг видео */
+  object-fit: cover;
+  display: block;
 }
 
 /* Контейнер списка карточек */
@@ -186,7 +298,7 @@ ol {
 /* Заголовок */
 .title {
   font-size: 75px;
-  font-family: 'Oswald', sans-serif; /* Другой шрифт для заголовка */
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   line-height: 0.94;
   text-transform: uppercase;
@@ -194,39 +306,36 @@ ol {
 }
 
 .content__accent {
-  color: #545050; /* Серый цвет для акцента */
+  color: #545050;
 }
 
 /* 3. Отступы между элементами списка карточек */
 .content__list {
   display: flex;
   flex-direction: column;
-  gap: 30px; /* Отступ между карточками */
+  gap: 30px;
 }
 
 /* 4. Отступ между последней карточкой и кнопкой "Показать ещё" */
 .content__list-container {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Отступ между списком и кнопкой */
+  gap: 20px; 
   height: 298px;
   overflow-y: auto;
 }
 
 .more-button {
-  align-self: center; /* Центрируем кнопку */
+  align-self: center;
   margin-top: 10px;
 }
 
-/* 5. Уже применили gap для .content__list-container выше */
-
-/* 6. Расположение элементов внутри карточки */
 .content__video-card {
   display: flex;
-  flex-direction: row; /* Элементы в одну строку */
-  align-items: flex-start; /* Прижимаем к верху */
+  flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 10px; /* Отступ между текстом и изображением */
+  gap: 10px;
 }
 
 /* 7. Стили для изображения карточки */
@@ -240,10 +349,10 @@ ol {
 
 /* Текстовая часть карточки занимает всё доступное пространство */
 .content__video-card-description-container {
-  flex-grow: 1; /* Занимает всё пространство не занятое картинкой */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Отступ между заголовком и описанием */
+  gap: 5px;
 }
 
 /* Дополнительные стили для карточек */
@@ -259,33 +368,79 @@ ol {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 200px; /* Ограничиваем ширину для многоточия */
+  max-width: 200px;
 }
 
 .content__video-card-description {
   font-size: 18px;
   font-weight: 400;
   font-family: 'Fira Sans Condensed', sans-serif;
-  line-height: 0.9; /* Необычный интерлиньяж для брутальности */
+  line-height: 0.9;
   
   /* Многострочное обрезание текста */
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* Ограничиваем до 4 строк */
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  max-height: 65px; /* Высота примерно для 4 строк */
+  max-height: 65px;
 }
 
+/* Делаем ссылку карточки блочным элементом */
 .content__card-link {
-  text-decoration: none; /* Убираем подчёркивание */
-  color: #FFFFFF; /* Явно задаем белый цвет */
   display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 2px;
 }
 
-.content__card-link:active,
+/* Текущая (выбранная) карточка */
+.content__card-link_current {
+  background-color: #545050;
+}
+
+/* Активное состояние (при удержании кнопки мыши) */
+.content__card-link:active {
+  background-color: #545050;
+}
+
+/* Состояние при наведении */
 .content__card-link:hover {
-  text-decoration: underline; /* Подчёркивание при взаимодействии */
-  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+/* Сбрасываем стандартную обводку фокуса */
+.content__card-link:focus {
+  outline: none;
+}
+
+/* Кастомная обводка для фокуса */
+.content__card-link:focus-visible {
+  outline: 1px solid #FFF;
+  outline-offset: 2px;
+}
+
+/* Добавляем отступы для элементов списка */
+.content__list-item {
+  padding: 0 3px;
+}
+
+/* Убедимся, что контейнер списка имеет скролл */
+.content__list-container {
+  height: 298px;
+  overflow-y: auto; /* Вертикальный скролл - часть дизайна */
+}
+
+/* Убираем подчёркивание при активном состоянии, чтобы не накладывалось */
+.content__card-link:active {
+  text-decoration: none;
+}
+
+/* Уточняем стили для видео-карточки */
+.content__video-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2px;
 }
 
 /* Стили для кнопки "Показать ещё" */
@@ -314,3 +469,33 @@ ol {
   clip-path: inset(50%);
   white-space: nowrap;
 } 
+/* Делаем контейнеры относительными для позиционирования прелоадеров */
+.result__video-container {
+  position: relative; /* Для прелоадера видео */
+  width: 711px;
+  height: 386px;
+  margin-bottom: 16px;
+  background: transparent;
+  overflow: hidden;
+}
+
+.content__list-container {
+  position: relative; /* Для прелоадера списка карточек */
+  height: 298px;
+  overflow-y: auto;
+}
+
+/* Стили для прелоадера (дополняем существующие из preloader.css) */
+.preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(27, 25, 25, 0.9);/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* Поверх всего содержимого контейнера */
+}
+
