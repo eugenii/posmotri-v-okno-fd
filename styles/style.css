@@ -12,7 +12,8 @@ html {
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
-  padding: 20px;
+  padding: 20px 0;
+  min-height: 100vh;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
@@ -59,7 +60,7 @@ ol {
   gap: 30px;
   align-items: flex-start;
   width: 1140px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 /* Левая колонка - точная ширина из макета */
@@ -82,11 +83,11 @@ ol {
 .search-form {
   display: flex;
   flex-direction: row;
-  align-items: flex-begin;
-  gap: 10px;
+  align-items: flex-end;
+  gap: 40px;
   justify-content: space-between;
-  min-height: 65px;
-  padding: 10px 0;
+  min-height: 132px;
+  padding: 0;
 }
 
 .search-form__fieldset {
@@ -96,6 +97,8 @@ ol {
   gap: 6px;
   border: none;
   padding: 5px 0;
+  min-height: 106px;
+  justify-content: center;
 }
 
 .search-form__fieldset-title {
@@ -108,6 +111,8 @@ ol {
 .search-form__checkbox-list {
   display: flex;
   gap: 13px;
+    align-items: center;
+  height: 100%;
 }
 
 .search-form__label {
@@ -266,6 +271,9 @@ ol {
 /* Контейнер списка карточек */
 .content__list-container {
   height: 298px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Запрещаем горизонтальный скролл */
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -299,17 +307,20 @@ ol {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
-  padding: 2px;
+  gap: 5px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* 7. Стили для изображения карточки */
 .content__video-card-thumbnail {
-  width: 194px; /* Фиксированная ширина */
-  height: 103px; /* Фиксированная высота */
+  width: 194px;
+  height: 103px;
   object-fit: cover; /* Заполнение контейнера с сохранением пропорций */
   object-position: center; /* Центрируем изображение */
   flex-shrink: 0; /* Запрещаем сжиматься */
+  max-width: 100%;
 }
 
 /* Текстовая часть карточки занимает всё доступное пространство */
@@ -318,6 +329,7 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  overflow: hidden;
 }
 
 /* Дополнительные стили для карточек */
@@ -333,7 +345,7 @@ ol {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 200px;
+  max-width: 100%;
 }
 
 .content__video-card-description {
