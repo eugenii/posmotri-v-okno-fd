@@ -123,8 +123,8 @@ ol {
   display: flex; 
   flex-direction: column; 
   width: 399px; 
-  gap: 26px; 
-  margin-top: 25px; 
+  gap: 21px; 
+  /* margin-top: 25px;  */
 } 
 /* Форма - горизонтальное расположение полей */ 
 
@@ -142,20 +142,12 @@ ol {
   margin-top: auto; 
 } 
 
-.result__video { 
-  inline-size: 100%; 
-  block-size: 100%; 
-  object-fit: cover; 
-  object-position: center; 
-} 
-
 .search-form__fieldset { 
   display: flex; 
   flex-direction: column; 
   gap: 5px; 
   border: none; 
-  inline-size: 100%; 
-  margin-top: -40px; 
+  inline-size: 100%;  
 } 
 
 .search-form__fieldset-title { 
@@ -275,20 +267,20 @@ ol {
   min-height: 34px; 
   flex-grow: 1; 
   max-width: 300px; 
-  margin-bottom: 20px; 
+  /* margin-bottom: 20px;  */
   margin-top: auto; 
 } 
 
 /* Кнопка "Показать ещё" */ 
 
 .more-button { 
-  width: 100%; 
+  width: calc(100% - 6px); 
   align-self: center; 
-  margin-top: 30px; 
   background: transparent; 
-  padding: 10px 20px; 
+  padding: 5px 20px; 
   font-family: inherit; 
   flex-shrink: 0;
+  margin: 0 3px;
 } 
 
 /* Состояния кнопок */ 
@@ -321,8 +313,8 @@ ol {
 .result__video-container { 
   position: relative; 
   width: 711px; 
-  height: 400px; 
-  margin-bottom: 20px; 
+  height: 386px; 
+  margin-bottom: 16px; 
   background: transparent; 
   overflow: hidden; 
 } 
@@ -333,7 +325,7 @@ ol {
   height: 100%; 
   object-fit: cover; 
   display: block; 
-  margin-top: -20px; 
+  object-position: center; 
 } 
 
  
@@ -372,6 +364,7 @@ ol {
   justify-content: flex-start; /* Прижимаем к верху */
   align-items: stretch;
   padding-top: 0; /* Убираем верхний отступ */
+  gap:10px;
 } 
 
  
@@ -384,7 +377,7 @@ ol {
   font-weight: 700; 
   line-height: 0.94; 
   text-transform: uppercase; 
-  margin-bottom: 20px; 
+  /* margin-bottom: 20px;  */
 } 
 
 .content__accent { 
